@@ -6,9 +6,10 @@
 <img width="373" alt="image" src="https://github.com/user-attachments/assets/e3baae53-6f3d-4810-9dab-fdb55c474061">
 
 
+## 调用示例
 - main.py  # 生成文件
 
-```
+```python
 ### 调用方式
 
 captcha_instance = Captcha(config)
@@ -21,7 +22,7 @@ print(captcha_data)
 ```
 
 - check.py # 校验坐标 
-```
+```python
 ### 调用方式
 
 correct_coords = [      # ### 需要点击的正确坐标、这里设置两个
@@ -54,7 +55,7 @@ print("点击正确" if is_valid else "点击错误")
 ```
 
 - 如果想生成中文而非英文的、调整以下
-```
+```python
 text = ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', k=num_text_chars))
 
 #将此代码调整文
