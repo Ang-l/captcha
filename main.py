@@ -164,9 +164,3 @@ class Captcha:
         return not (x1 > x2 + w2 or x1 + w1 < x2 or y1 > y2 + h2 or y1 + h1 < y2)
 
 
-captcha_instance = Captcha(config)
-
-# 生成验证码
-captcha_data = captcha_instance.create("02587a53-1b49-4497-9896-b88b1c50fa4b")
-
-print(captcha_data)
