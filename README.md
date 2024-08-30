@@ -2,6 +2,10 @@
 
 - 此脚本是一个模拟captche生成一个校验图片的脚本
 
+## 效果
+<img width="373" alt="image" src="https://github.com/user-attachments/assets/e3baae53-6f3d-4810-9dab-fdb55c474061">
+
+
 - main.py  # 生成文件
 
 ```
