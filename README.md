@@ -1,6 +1,14 @@
 # captcha
 
-- 此脚本是一个模拟captche生成一个校验图片的脚本
+- 此脚本是一个python模拟captche生成一个校验图片的脚本、可以将此脚本单独引入项目中
+  
+- 拉取项目、安装依赖、生成
+```python
+git clone git@github.com:Ang-l/captcha.git
+cd captcha
+pip install Pillow    # ###### 安装依赖
+python main.py
+```
 
 ## 效果
 <img width="373" alt="image" src="https://github.com/user-attachments/assets/e3baae53-6f3d-4810-9dab-fdb55c474061">
