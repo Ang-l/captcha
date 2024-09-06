@@ -1,9 +1,7 @@
-import time
+
 import random
 import os
-import json
 import base64
-import hashlib
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -134,7 +132,62 @@ class Captcha:
         }
 
     # ########### Collision detection to avoid icon overlap
-    def _is_overlapping(self, x1, y1, w1, h1, x2, y2, w2, h2):
+    @classmethod
+    def _is_overlapping(cls, x1, y1, w1, h1, x2, y2, w2, h2):
         return not (x1 > x2 + w2 or x1 + w1 < x2 or y1 > y2 + h2 or y1 + h1 < y2)
 
+    @classmethod
+    def parse_user_clicks(cls, user_click_data_str):
+        parts = user_click_data_str.split(';')
 
+        coords_str = parts[0]
+        image_width = int(parts[1])
+        image_height = int(parts[2])
+        click_coords = coords_str.split('-')
+        click1_x, click1_y = map(int, click_coords[0].split(','))
+        click2_x, click2_y = map(int, click_coords[1].split(','))
+
+        return [(click1_x, click1_y), (click2_x, click2_y)], (image_width, image_height)
+
+    @classmethod
+    def is_within_tolerance(cls, user_coord, correct_coord):
+        # 容错范围为图标的宽度和高度
+        tolerance_x = correct_coord['width']
+        tolerance_y = correct_coord['height']
+
+        return (abs(user_coord[0] - correct_coord['x']) <= tolerance_x and
+                abs(user_coord[1] - correct_coord['y']) <= tolerance_y)
+
+    @classmethod
+    def validate_click(cls, user_click_data_str, correct_coords):
+        try:
+            user_clicks, _ = cls.parse_user_clicks(user_click_data_str)
+        except ValueError as e:
+            return False
+
+        # 确保用户点击数量与正确坐标数量一致
+        if len(user_clicks) != len(correct_coords):
+            return False
+
+        # 确保每个用户点击坐标都与对应的正确坐标匹配
+        for i, user_click in enumerate(user_clicks):
+            correct_coord = correct_coords[i]
+            if not cls.is_within_tolerance(user_click, correct_coord):
+                return False
+
+        return True
+
+
+if __name__ == '__main__':
+    correct_coords = [
+        {'size': 21, 'icon': False, 'text': 'i', 'width': 6, 'height': 19, 'x': 70, 'y': 122},
+        {'size': 19, 'icon': False, 'text': 'n', 'width': 12, 'height': 17, 'x': 270, 'y': 177}
+    ]
+
+    xxx = Captcha(config)
+    # res = xxx.create("1111")
+
+    user_click_data_str = "70,120-265,170;350;200"
+    is_valid = xxx.validate_click(user_click_data_str, correct_coords)
+
+    print(is_valid)
