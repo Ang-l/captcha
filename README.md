@@ -29,7 +29,7 @@ print(captcha_data)
 
 ```
 
-- check.py # 校验坐标 
+- # 校验坐标 
 ```python
 ### 调用方式
 
