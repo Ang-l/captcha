@@ -122,6 +122,8 @@ class Captcha:
         with open(image_filename, "rb") as img_file:
             base64_image = base64.b64encode(img_file.read()).decode()
 
+        os.remove(image_filename)
+
         return {
             'id': id,
             'text': text,
