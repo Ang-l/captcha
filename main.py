@@ -16,8 +16,26 @@ config = {    # ###### 配置字典，例如：背景路径、字体路径、图
         'static/fonts/zhttfs/SourceHanSansCN-Normal.ttf'
     ],
     "icon_dict": {
-        "aeroplane": "飞机",
-        "apple": "苹果"
+        'aeroplane': '飞机',
+        'apple': '苹果',
+        'banana': '香蕉',
+        'bell': '铃铛',
+        'bicycle': '自行车',
+        'bird': '小鸟',
+        'bomb': '炸弹',
+        'butterfly': '蝴蝶',
+        'candy': '糖果',
+        'crab': '螃蟹',
+        'cup': '杯子',
+        'dolphin': '海豚',
+        'fire': '火',
+        'guitar': '吉他',
+        'hexagon': '六角形',
+        'pear': '梨',
+        'rocket': '火箭',
+        'sailboat': '帆船',
+        'snowflake': '雪花',
+        'wolf head': '狼头',
     },
     "length": 4,
     "arr_len": 2
