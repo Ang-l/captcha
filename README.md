@@ -1,39 +1,39 @@
 # captcha
 
-- 此脚本是一个python模拟captche生成一个校验图片的脚本、可以将此脚本单独引入项目中
+- This script is a Python simulation captche to generate a verification image, which can be introduced separately into the project
   
-- 拉取项目、安装依赖、生成
+- Pull project, install dependencies, and generate
 ```python
 git clone git@github.com:Ang-l/captcha.git
 cd captcha
-pip install Pillow    # ###### 安装依赖
+pip install Pillow    # ###### Install dependencies
 python main.py
 ```
 
-## 效果
+## effect
 <img width="373" alt="image" src="https://github.com/user-attachments/assets/e3baae53-6f3d-4810-9dab-fdb55c474061">
 
 
-## 调用示例
-- main.py  # 生成文件
+## Call Example
+- main.py  # Generate files
 
 ```python
-### 调用方式
+### Call Method
 
 captcha_instance = Captcha(config)
 
-# 生成验证码
+# Generate verification code
 captcha_data = captcha_instance.create("02587a53-1b49-4497-9896-b88b1c50fa4b")
 
 print(captcha_data)
 
 ```
 
-- # 校验坐标 
+- # Verify coordinates
 ```python
-### 调用方式
+###  Call Method
 
-correct_coords = [      # ### 需要点击的正确坐标、这里设置两个
+correct_coords = [      # ### The correct coordinates that need to be clicked, set two here
   {
     "size": 21,
     "name": "fire",
@@ -55,18 +55,18 @@ correct_coords = [      # ### 需要点击的正确坐标、这里设置两个
 ]
 
 # 示例数据
-user_click_data_str = "104,37-164,76;350;200"   # 104,37 第一个点击的x、y。164,76第二个点击的x、y。350;200图片宽高
+user_click_data_str = "104,37-164,76;350;200"   # 104,37 The first clicked x y。164, 76. The second click on x y。350; 200 picture width and height
 is_valid = validate_click(user_click_data_str, correct_coords)
 
-print("点击正确" if is_valid else "点击错误")
+print("secc" if is_valid else "fai")
 
 ```
 
-- 如果想生成中文而非英文的、调整以下
+- If you want to generate Chinese instead of English, adjust the following
 ```python
 text = ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', k=num_text_chars))
 
-#将此代码调整文
+# 将此代码调整文
 text = ''.join(random.choices('需要生成的中文信息不限字数', k=num_text_chars))
 
 ```
